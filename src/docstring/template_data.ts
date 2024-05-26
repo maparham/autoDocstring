@@ -8,6 +8,7 @@ import {
     KeywordArgument,
     Returns,
     Yields,
+    Comment,
 } from "../docstring_parts";
 
 export class TemplateData {
@@ -18,6 +19,7 @@ export class TemplateData {
     public exceptions: Exception[];
     public returns: Returns;
     public yields: Yields;
+    public docs: Comment[];
 
     private includeName: boolean;
     private includeExtendedSummary: boolean;
@@ -35,6 +37,7 @@ export class TemplateData {
         this.exceptions = docstringParts.exceptions;
         this.returns = docstringParts.returns;
         this.yields = docstringParts.yields;
+        this.docs = docstringParts.docs;
 
         this.includeName = includeName;
         this.includeExtendedSummary = includeExtendedSummary;
@@ -93,6 +96,10 @@ export class TemplateData {
 
     public exceptionsExist(): boolean {
         return this.exceptions.length > 0;
+    }
+
+    public docsExist(): boolean {
+        return this.docs.length > 0;
     }
 
     public returnsExist(): boolean {

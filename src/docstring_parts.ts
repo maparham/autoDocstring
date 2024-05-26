@@ -8,6 +8,7 @@ export interface DocstringParts {
     exceptions: Exception[];
     returns: Returns;
     yields: Yields;
+    docs: Comment[];
 }
 
 export interface Decorator {
@@ -31,6 +32,10 @@ export interface Exception {
 
 export interface Returns {
     type: string;
+}
+
+export interface Comment {
+    comment_line: string;
 }
 
 export interface Yields {

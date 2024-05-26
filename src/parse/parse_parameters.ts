@@ -7,6 +7,7 @@ import {
     KeywordArgument,
     Returns,
     Yields,
+    Comment
 } from "../docstring_parts";
 
 export function parseParameters(
@@ -22,6 +23,7 @@ export function parseParameters(
         returns: parseReturn(parameterTokens, body),
         yields: parseYields(parameterTokens, body),
         exceptions: parseExceptions(body),
+        docs: parseDocs(body)
     };
 }
 
@@ -96,6 +98,8 @@ function parseReturn(parameters: string[], body: string[]): Returns {
     return returnType;
 }
 
+
+
 function parseYields(parameters: string[], body: string[]): Yields {
     const returnType = parseReturnFromDefinition(parameters);
 
@@ -146,6 +150,21 @@ function parseExceptions(body: string[]): Exception[] {
     }
 
     return exceptions;
+}
+
+function parseDocs(body: string[]): Comment[] {
+    const comments: Comment[] = []
+
+    for (const line of body) {
+        const match = line.match(/# *doc: (.*)/);
+
+        if (match == null) {
+            continue;
+        }
+        comments.push({ comment_line: match[1] })
+    }
+
+    return comments;
 }
 
 export function inArray<type>(item: type, array: type[]) {

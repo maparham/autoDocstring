@@ -47,7 +47,7 @@
         "commands": [
             {
                 "command": "autoDocstring.generateDocstring",
-                "title": "Generate Docstring"
+                "title": "Generate Docstring Pro"
             }
         ],
         "keybindings": [

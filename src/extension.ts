@@ -65,7 +65,7 @@ function validEnterActivation(document: vs.TextDocument, position: vs.Position):
     return (
         validDocstringPrefix(docString, position.line, position.character, quoteStyle) &&
         !docstringIsClosed(docString, position.line, position.character, quoteStyle)
-    );
+    );  
 }
 
 /**
@@ -82,7 +82,7 @@ class AutoDocstringCompletionItem extends vs.CompletionItem {
 
         this.command = {
             command: generateDocstringCommand,
-            title: "Generate Docstring",
+            title: "Generate Docstring Pro",
         };
     }
 }

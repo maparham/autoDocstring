@@ -1,141 +1,71 @@
-[![Installs](https://vsmarketplacebadge.apphb.com/installs-short/njpwerner.autodocstring.svg)](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring)
-[![Rating](https://vsmarketplacebadge.apphb.com/rating-short/njpwerner.autodocstring.svg)](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring&ssr=false#review-details)
-[![Build Status](https://github.com/NilsJPWerner/autoDocstring/actions/workflows/test_and_publish.yml/badge.svg)](https://github.com/NilsJPWerner/autoDocstring/actions/workflows/test_and_publish.yml)
-[![Github Sponsorship](https://img.shields.io/badge/sponsor-5A5A5A?style=flat&logo=GitHub-Sponsors)](https://github.com/sponsors/NilsJPWerner)
+# generate-docstring-pro README
 
-# autoDocstring: VSCode Python Docstring Generator
-
-Visual Studio Code extension to quickly generate docstrings for python functions.
-
-![Auto Generate Docstrings](images/demo.gif)
+This is the README for your extension "generate-docstring-pro". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
--   Quickly generate a docstring snippet that can be tabbed through.
--   Choose between several different types of docstring formats.
--   Infers parameter types through pep484 type hints, default values, and var names.
--   Support for args, kwargs, decorators, errors, and parameter types
+Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
 
-## Docstring Formats
+For example if there is an image subfolder under your extension project workspace:
 
-To turn off type generation in docstrings use the `-notypes` template of the desired format. The docBlockr format is a typed version of PEP0257.
+\!\[feature X\]\(images/feature-x.png\)
 
--   [docBlockr](docs/docblockr.md)
--   [doxygen](docs/doxygen.md)
--   [google](docs/google.md)
--   [numpy](docs/numpy.md)
--   [one-line-sphinx](docs/one-line-sphinx.md)
--   [pep257](docs/pep257.md)
--   [sphinx](docs/sphinx.md)
+> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
-## Usage
+## Requirements
 
-Cursor must be on the line directly below the definition to generate full auto-populated docstring
-
--   Press enter after opening docstring with triple quotes (configurable `"""` or `'''`)
--   Keyboard shortcut: `ctrl+shift+2` or `cmd+shift+2` for mac
-    -   Can be changed in Preferences -> Keyboard Shortcuts -> extension.generateDocstring
--   Command: `Generate Docstring`
--   Right click menu: `Generate Docstring`
+If you have any requirements or dependencies, add a section describing those and how to install and configure them.
 
 ## Extension Settings
 
+Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+
+For example:
+
 This extension contributes the following settings:
 
--   `autoDocstring.docstringFormat`: Switch between different docstring formats
--   `autoDocstring.customTemplatePath`: Path to a custom docstring template (absolute or relative to the project root)
--   `autoDocstring.generateDocstringOnEnter`: Generate the docstring on pressing enter after opening docstring
--   `autoDocstring.includeExtendedSummary`: Include extended summary section in docstring
--   `autoDocstring.includeName`: Include function name at the start of docstring
--   `autoDocstring.startOnNewLine`: New line before summary placeholder
--   `autoDocstring.guessTypes`: Infer types from type hints, default values and variable names
--   `autoDocstring.quoteStyle`: The style of quotes for docstrings
+* `myExtension.enable`: Enable/disable this extension.
+* `myExtension.thing`: Set to `blah` to do something.
 
-## Custom Docstring Templates
+## Known Issues
 
-This extension now supports custom templates. The extension uses the [mustache.js](https://github.com/janl/mustache.js/) templating engine. To use a custom template create a .mustache file and specify its path using the `customTemplatePath` configuration. View the included google docstring [template](src/docstring/templates/google.mustache) for a usage example. The following tags are available for use in custom templates.
+Calling out known issues can help limit users opening duplicate issues against your extension.
 
-### Variables
+## Release Notes
 
-```
-{{name}}                        - name of the function
-{{summaryPlaceholder}}          - _summary_ placeholder
-{{extendedSummaryPlaceholder}}  - [extended_summary] placeholder
-```
+Users appreciate release notes as you update your extension.
 
-### Sections
+### 1.0.0
 
-```
-{{#args}}                       - iterate over function arguments
-    {{var}}                     - variable name
-    {{typePlaceholder}}         - _type_ or guessed type  placeholder
-    {{descriptionPlaceholder}}  - _description_ placeholder
-{{/args}}
+Initial release of ...
 
-{{#kwargs}}                     - iterate over function kwargs
-    {{var}}                     - variable name
-    {{typePlaceholder}}         - _type_ or guessed type placeholder
-    {{&default}}                - default value (& unescapes the variable)
-    {{descriptionPlaceholder}}  - _description_ placeholder
-{{/kwargs}}
+### 1.0.1
 
-{{#exceptions}}                 - iterate over exceptions
-    {{type}}                    - exception type
-    {{descriptionPlaceholder}}  - _description_ placeholder
-{{/exceptions}}
+Fixed issue #.
 
-{{#yields}}                     - iterate over yields
-    {{typePlaceholder}}         - _type_ placeholder
-    {{descriptionPlaceholder}}  - _description_ placeholder
-{{/yields}}
+### 1.1.0
 
-{{#returns}}                    - iterate over returns
-    {{typePlaceholder}}         - _type_ placeholder
-    {{descriptionPlaceholder}}  - _description_ placeholder
-{{/returns}}
-```
+Added features X, Y, and Z.
 
-### Additional Sections
+---
 
-```
-{{#argsExist}}          - display contents if args exist
-{{/argsExist}}
+## Following extension guidelines
 
-{{#kwargsExist}}        - display contents if kwargs exist
-{{/kwargsExist}}
+Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
 
-{{#parametersExist}}    - display contents if args or kwargs exist
-{{/parametersExist}}
+* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
 
-{{#exceptionsExist}}    - display contents if exceptions exist
-{{/exceptionsExist}}
+## Working with Markdown
 
-{{#yieldsExist}}        - display contents if returns exist
-{{/yieldsExist}}
+You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
 
-{{#returnsExist}}       - display contents if returns exist
-{{/returnsExist}}
+* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
+* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
+* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
 
-{{#placeholder}}        - makes contents a placeholder
-{{/placeholder}}
-```
+## For more information
 
-## Changelog
+* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
+* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
-Check the [CHANGELOG.md](CHANGELOG.md) for any version changes.
-
-## Reporting issues
-
-Report any issues on the github [issues](https://github.com/NilsJPWerner/autoDocstring/issues) page. Follow the template and add as much information as possible.
-
-## Contributing
-
-The source code for this extension is hosted on [GitHub](https://github.com/NilsJPWerner/autoDocstring). Contributions, pull requests, suggestions, and bug reports are greatly appreciated.
-
--   Post any issues and suggestions to the github [issues page](https://github.com/NilsJPWerner/autoDocstring/issues). Add the `feature request` tag to any feature requests or suggestions.
--   To contribute, fork the project and then create a pull request back to master. Please update the README if you make any noticeable feature changes.
--   There is no official contribution guide or code of conduct yet, but please follow the standard open source norms and be respectful in any comments you make.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+**Enjoy!**
